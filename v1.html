@@ -7,7 +7,7 @@
     <title>To-Do List Application</title>
 </head>
 <body>
-    <div class="container bg-gray-200 flex flex-col w-[35%] shadow-lg p-3 m-auto my-6">
+    <div class="container bg-gray-200 flex flex-col lg:w-[35%] shadow-lg p-3 m-auto my-6">
         <p class="font-semibold text-lg text-center py-2">Elements on the To Do List</p>
         <ul class="list-disc text-center pl-5" id="taskDisplay">    
         </ul>
@@ -18,7 +18,7 @@
 
         const displayTasks = () => {
             let taskDisplay = document.getElementById("#taskDisplay");
-            taskList.innerHTML = "";
+            taskDisplay.innerHTML = "";
             tasks.forEach((task, index) => {
                 const taskItem = document.createElement('li');
                 taskItem.classList.add('bg-blue-200', 'p-2', 'm-2', 'rounded-lg', 'decoration-none', 'list-none');
@@ -27,7 +27,15 @@
             })
         }
 
+        const addTask = (task) => {
+            tasks.push(task);
+            console.log(`Successfully added ${task} to the list`);
+            alert(`Successfully added ${task} to the list`)
+            displayTasks();
+        }
+
         displayTasks(); 
+        addTask('Buy Bread');
     </script>
 </body>
 </html>
