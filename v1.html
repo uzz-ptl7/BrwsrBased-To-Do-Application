@@ -5,11 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.tailwindcss.com"></script>
     <title>To-Do List Application</title>
+    <style>
+        li{
+            list-style-type: circle;
+        }
+    </style>
 </head>
 <body>
     <div class="container bg-gray-200 flex flex-col lg:w-[35%] shadow-lg p-3 m-auto my-6">
         <p class="font-semibold text-lg text-center py-2">Elements on the To Do List</p>
-        <ul class="list-disc text-center pl-5" id="taskDisplay">    
+        <ul class=" text-center pl-5" id="taskDisplay">    
         </ul>
     </div>
 
@@ -17,11 +22,13 @@
         let tasks = ["Buy milk", "Clean the room", "Go to the gym"];
 
         const displayTasks = () => {
-            let taskDisplay = document.getElementById("#taskDisplay");
+            let taskDisplay = document.querySelector("#taskDisplay");
+            let container = document.querySelector(".container");
             taskDisplay.innerHTML = "";
             tasks.forEach((task, index) => {
                 const taskItem = document.createElement('li');
-                taskItem.classList.add('bg-blue-200', 'p-2', 'm-2', 'rounded-lg', 'decoration-none', 'list-none');
+                // container.classList.add('bg-red-600')
+                taskItem.classList.add('bg-blue-200', 'p-2', 'm-2', 'rounded-lg');
                 taskItem.textContent = task;
                 taskDisplay.appendChild(taskItem);
             })
