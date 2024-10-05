@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.tailwindcss.com"></script>
     <title>To-Do List Application</title>
+    <!-- Internal Css -->
     <style>
         li{
             list-style-type: circle;
@@ -12,15 +13,20 @@
     </style>
 </head>
 <body>
+
+    <!-- Html Tags and Part of the Project -->
     <div class="container bg-gray-200 flex flex-col lg:w-[35%] shadow-lg p-3 m-auto my-6">
         <p class="font-semibold text-lg text-center py-2">Elements on the To Do List</p>
         <ul class=" text-center pl-5" id="taskDisplay">    
         </ul>
     </div>
 
+    <!-- Java Script Code -->
     <script>
+        // ..............Array of Tasks........................
         let tasks = ["Buy milk", "Clean the room", "Go to the gym"];
 
+        // ..............Function to Display Tasks................
         const displayTasks = () => {
             let taskDisplay = document.querySelector("#taskDisplay");
             let container = document.querySelector(".container");
@@ -34,6 +40,7 @@
             })
         }
 
+        // ..............Function to Add Task................
         const addTask = (task) => {
             tasks.push(task);
             console.log(`Successfully added ${task} to the list`);
@@ -41,6 +48,7 @@
             displayTasks();
         }
 
+        // ..............Calling Functions................
         displayTasks(); 
         addTask('Buy Bread');
     </script>
