@@ -10,7 +10,7 @@ const displayTasks = () => {
     // ..........................................Create Task Container.............................................
     tasks.forEach((task, index) => {
     const taskItem = document.createElement('li');
-    taskItem.classList.add('bg-black', 'text-gray-200', 'p-2', 'rounded-lg','flex','justify-between', 'w-[60%]', 'm-auto', 'my-2');
+    taskItem.classList.add('bg-black', 'text-gray-200', 'p-2', 'rounded-lg','flex','justify-between', 'lg:w-[60%]', 'w-[90%]', 'm-auto', 'my-2');
     
     // ..................................................Create Task Title Container......................................
     const taskText = document.createElement('span');
@@ -122,7 +122,7 @@ const displayCompletedTasks = () => {
 
     completedTasks.forEach((task, index) => {
         const taskItem = document.createElement('li');
-        taskItem.classList.add('bg-black', 'text-gray-200', 'p-2', 'rounded-lg','flex','justify-between', 'w-[60%]', 'm-auto', 'my-2');
+        taskItem.classList.add('bg-black', 'text-gray-200', 'p-2', 'rounded-lg','flex','justify-between', 'lg:w-[60%]', 'w-[90%]', 'm-auto', 'my-2');
         
         const taskText = document.createElement('span');
         taskText.textContent = task;
