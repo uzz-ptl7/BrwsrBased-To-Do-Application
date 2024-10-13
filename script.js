@@ -89,13 +89,22 @@ const deleteTask = (index) => {
     } 
 }
 
-// ...................................................Mark as Done Button Functionality.................................
+// ...................................................Mark as Done Task Button Functionality.................................
 const markAsDone = (index) => {
     const task = tasks.splice(index, 1)[0];
     completedTasks.push(task);
     saveTaskToLocalStorage();
     displayTasks();
     displayCompletedTasks();
+}
+
+// ...................................................Undo Completed Tasks Button.............................
+const undoCompletedTask = (index) => {
+    const completedTask = completedTasks.splice(index, 1)[0];
+    tasks.push(completedTask);
+    saveTaskToLocalStorage();
+    displayTasks();
+    displayCompletedTasks(); 
 }
 
 // ..............................................Display Completed Tasks.....................................
@@ -123,9 +132,19 @@ const displayCompletedTasks = () => {
         const taskLinks = document.createElement('div');
         taskLinks.classList.add('task-links');
 
+        // .................................................Completed Task Undo Button........................................
+        const undoButton = document.createElement('a');
+        undoButton.href = '#';
+        undoButton.textContent = '↩️';
+        undoButton.classList.add('mr-4');
+        undoButton.addEventListener('click', () => undoCompletedTask(index));
+        taskLinks.appendChild(undoButton);
+
+        // ..................................................Completed Task Delete Button......................................
         const deleteButton = document.createElement('a');
         deleteButton.href = '#';
         deleteButton.textContent = '🗑️';
+        deleteButton.classList.add('mr-4');
         deleteButton.addEventListener('click', () => deleteCompletedTasks(index));
         taskLinks.appendChild(deleteButton); 
 
