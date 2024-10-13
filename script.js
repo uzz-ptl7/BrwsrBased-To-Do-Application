@@ -95,8 +95,53 @@ const markAsDone = (index) => {
     completedTasks.push(task);
     saveTaskToLocalStorage();
     displayTasks();
+    displayCompletedTasks();
 }
 
+// ..............................................Display Completed Tasks.....................................
+const displayCompletedTasks = () => {
+    const completedTasksSection = document.querySelector('#completedTasks');
+    const completedTaskDisplay = document.querySelector('#completedTaskDisplay');
+
+    completedTaskDisplay.innerHTML = '';
+
+    if (completedTasks.length > 0) {
+        completedTasksSection.classList.remove('hidden');
+    } else {
+        completedTasksSection.classList.add('hidden');
+    }
+
+    completedTasks.forEach((task, index) => {
+        const taskItem = document.createElement('li');
+        taskItem.classList.add('bg-black', 'text-gray-200', 'p-2', 'rounded-lg','flex','justify-between', 'w-[60%]', 'm-auto', 'my-2');
+        
+        const taskText = document.createElement('span');
+        taskText.textContent = task;
+        taskText.classList.add('line-through');
+        taskItem.appendChild(taskText);
+
+        const taskLinks = document.createElement('div');
+        taskLinks.classList.add('task-links');
+
+        const deleteButton = document.createElement('a');
+        deleteButton.href = '#';
+        deleteButton.textContent = '🗑️';
+        deleteButton.addEventListener('click', () => deleteCompletedTasks(index));
+        taskLinks.appendChild(deleteButton); 
+
+        taskItem.appendChild(taskLinks);
+        completedTaskDisplay.appendChild(taskItem);
+    })
+}
+
+// .....................................................Delete Completed Tasks........................................
+const deleteCompletedTasks = (index) => {
+    if(confirm('Are you sure you want to delete this task?')){
+        completedTasks.splice(index, 1);
+        saveTaskToLocalStorage();
+        displayCompletedTasks();  
+    } 
+}
 
 // ..................................................Load Tasks from Local Storage......................................
 const loadTasksFromStorage = () =>{
@@ -110,6 +155,7 @@ const loadTasksFromStorage = () =>{
 
     if (storedCompletedTasks) {
         completedTasks = JSON.parse(storedCompletedTasks);
+        displayCompletedTasks();
     }
 }
 
