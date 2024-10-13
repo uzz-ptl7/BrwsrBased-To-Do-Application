@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="style.css">
     <title>To Do List Application</title>
 </head>
 <body class="bg-gray-300">
@@ -13,8 +12,14 @@
 
         <ul id="taskDisplay" class="mb-4"></ul>
 
+        <div id="completedTasks" class="completedTask hidden">
+            <h2 class="text-xl font-semibold mt-8">Completed Tasks</h2>
+            <ul id="completedTaskDisplay"></ul>
+        </div>
+
         <input type="text" class="border p-2 my-5 rounded-lg w-[40%]" placeholder="Enter a New Task" id="newTask">
         <button id="addTaskBtn" class="px-4 py-2 bg-blue-500 text-white rounded-lg">Add Task</button>
+
     </div>
     
     <script src="./script.js"></script>
